@@ -1,126 +1,83 @@
-# 🚀 GitHub Dynamic PRO System
 
-A **fully dynamic, GitHub-powered developer dashboard** built with React (Vite).  
-This project transforms a GitHub profile into a **real-time analytics platform** with caching, performance optimization, and modern UI inspired by GitHub itself.
+# 💎 GitHub Developer Dashboard
 
----
+<div align="center">
 
-## 🔥 Live Demo
+<img src="Screenshot.png" alt="GitHub Developer Dashboard">
 
-```
+# 🔒 GitHub Developer Dashboard
 
-[https://your-project-url.com](https://your-project-url.com)
+</div>
 
-````
-
----
-
-## 🧠 Overview
-
-GitHub Dynamic PRO System is a **live developer portfolio dashboard** that fetches real-time data from GitHub API and visualizes it in a clean, GitHub-style interface.
-
-It is NOT a static portfolio — it is a **live system connected directly to GitHub infrastructure**.
+![GitHub Repo stars](https://img.shields.io/github/stars/miladrezanezhad/GitHub-Developer-Dashboard?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/miladrezanezhad/GitHub-Developer-Dashboard?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/miladrezanezhad/GitHub-Developer-Dashboard?style=for-the-badge)
+![License](https://img.shields.io/github/license/miladrezanezhad/GitHub-Developer-Dashboard?style=for-the-badge)
 
 ---
 
-## ⚙️ Features
+## 🚀 Overview
 
-### 📡 Real-Time GitHub Integration
-- Live user profile data
-- Dynamic repository list
-- Real stars, forks, and metadata
-- Language breakdown per project
+A **modern developer portfolio dashboard** that dynamically visualizes GitHub profile data, repositories, contributions, and coding activity in a clean, minimal, and interactive UI.
+
+Built for developers who want a **live, automated, and data-driven portfolio** instead of a static resume.
 
 ---
 
-### 🧠 Smart Caching System (1 Hour TTL)
-- Prevents GitHub API rate limiting
-- Stores API responses locally
-- Auto-refresh every 60 minutes
-- Optimized performance layer
+## 🎯 Features
+
+* ⚡ Live GitHub profile integration (repos, stars, followers)
+* 📊 Dynamic contribution graph visualization
+* 🧠 Categorized project filtering system
+* 💻 Interactive terminal-style developer identity section
+* 📈 Language usage breakdown
+* 📬 Contact form UI (frontend simulation)
+* 🌙 Modern dark UI with cyber-inspired design
+* 🔄 Fully responsive (mobile + desktop)
 
 ---
 
-### 📊 Developer Analytics Dashboard
-- Total repositories
-- Stars count (calculated live)
-- Followers / following
-- Language usage statistics
+## 🖥️ Demo
+
+👉 Live Demo:
+[https://your-deployment-url.com](https://your-deployment-url.com)
 
 ---
 
-### 📁 Repository Explorer
-- GitHub-style repository cards
-- Sorting by last updated
-- Language tags with color indicators
-- Direct links to GitHub repos
+## 🎬 Preview
+
+![Dashboard Preview](https://raw.githubusercontent.com/miladrezanezhad/GitHub-Developer-Dashboard/main/assets/demo.gif)
+
+> If GIF is not available yet, you can create one using:
+
+* ScreenToGif (Windows)
+* LICEcap
+* OBS Studio
 
 ---
 
-### 🔥 Activity Feed (Simulated GitHub Style)
-- Push events
-- Repo creation events
-- Update activity timeline
+## 🧰 Tech Stack
 
----
-
-### 🌑 GitHub-Inspired UI
-- Dark GitHub theme (#0d1117)
-- Clean bordered UI system
-- Minimal and professional layout
-- Responsive design (mobile/tablet/desktop)
-
----
-
-## 🧱 Tech Stack
-
-- React (Vite)
-- JavaScript (ES6+)
-- GitHub REST API
-- Custom caching layer (localStorage / memory)
-- Pure CSS (no frameworks)
-
----
-
-## 🔐 Environment Variables
-
-Create a `.env` file:
-
-```env
-VITE_GITHUB_TOKEN=your_personal_access_token
-VITE_GITHUB_USERNAME=your_username
-````
-
-⚠️ Never expose your token publicly.
-
----
-
-## 🧠 Architecture
-
-```
-React App
-   ↓
-Custom Hook (useGithub)
-   ↓
-Cache Layer (1h TTL)
-   ↓
-GitHub API (REST)
-```
+* ⚛️ React 18
+* ⚡ Vite
+* 🎨 TailwindCSS / Custom CSS
+* 📡 GitHub REST API
+* 🧩 Component-based architecture
 
 ---
 
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/miladrezanezhad/GitHub-Developer-Dashboard
-cd github-dynamic-pro
+git clone https://github.com/miladrezanezhad/GitHub-Developer-Dashboard.git
+cd GitHub-Developer-Dashboard
 npm install
 npm run dev
 ```
 
 ---
 
-## 🚀 Build for Production
+## 🏗️ Build
 
 ```bash
 npm run build
@@ -130,74 +87,84 @@ npm run build
 
 ## 🌍 Deployment
 
-Recommended platforms:
+You can deploy easily on:
 
-* Vercel (best option)
-* Netlify
-* Cloudflare Pages
+* 🔵 Vercel
+* 🟢 Netlify
+* 🟣 Render
+* ⚫ Cloudflare Pages
 
----
+Build output:
 
-## 📊 Performance Features
-
-* API request caching (1 hour)
-* Reduced GitHub rate-limit usage
-* Lazy data updates
-* Optimized rendering
-* Minimal re-renders using hooks
+```bash
+dist
+```
 
 ---
 
-## 🎯 Use Cases
+## 🔐 Environment Variables
 
-* Developer portfolio replacement
-* GitHub analytics dashboard
-* Open-source profile showcase
-* Resume alternative for engineers
+Create a `.env` file:
 
----
-
-## 📸 UI Inspiration
-
-This project is heavily inspired by:
-
-* GitHub UI system
-* GitHub profile pages
-* GitHub repository dashboard
+```env
+VITE_GITHUB_TOKEN=your_github_token
+VITE_GITHUB_USERNAME=miladrezanezhad
+```
 
 ---
 
-## 🧠 Future Improvements
+## 📁 Project Structure
 
-* GitHub GraphQL contribution heatmap (real)
-* Webhook-based live updates
-* Backend proxy for secure token handling
-* Advanced repo search
-* Multi-user dashboard mode
-* Dark/light theme switch
+```
+src/
+ ├── components/
+ ├── hooks/
+ ├── assets/
+ ├── App.jsx
+ └── main.jsx
+```
 
 ---
 
-## 👤 Author
+## 📊 GitHub Integration
+
+This project uses GitHub API to fetch:
+
+* Repositories
+* Stars
+* Followers
+* Languages
+* Contribution data
+
+---
+
+## ⚠️ Rate Limit Note
+
+GitHub API has rate limits.
+Using a token increases limit significantly.
+
+---
+
+## 👨‍💻 Author
 
 **Milad Rezanezhad**
 
 * GitHub: [https://github.com/miladrezanezhad](https://github.com/miladrezanezhad)
-* Focus: Open Source • AI • Security • Web Systems
+* Portfolio: [https://your-site.com](https://your-site.com)
 
 ---
 
-## ⭐ Show Your Support
+## ⭐ Support
 
 If you like this project:
 
-* Star the repo ⭐
-* Share it with developers
-* Contribute improvements
+* ⭐ Star the repository
+* 🍴 Fork it
+* 🧠 Contribute improvements
 
 ---
 
 ## 📜 License
 
-MIT License — free to use and modify
+This project is open-source under the MIT License.
 
