@@ -27,9 +27,7 @@ Built for developers who want a **live, automated, and data-driven portfolio** i
 * ⚡ Live GitHub profile integration (repos, stars, followers)
 * 📊 Dynamic contribution graph visualization
 * 🧠 Categorized project filtering system
-* 💻 Interactive terminal-style developer identity section
 * 📈 Language usage breakdown
-* 📬 Contact form UI (frontend simulation)
 * 🌙 Modern dark UI with cyber-inspired design
 * 🔄 Fully responsive (mobile + desktop)
 
@@ -40,17 +38,7 @@ Built for developers who want a **live, automated, and data-driven portfolio** i
 👉 Live Demo:
 [https://your-deployment-url.com](https://your-deployment-url.com)
 
----
 
-## 🎬 Preview
-
-![Dashboard Preview](https://raw.githubusercontent.com/miladrezanezhad/GitHub-Developer-Dashboard/main/assets/demo.gif)
-
-> If GIF is not available yet, you can create one using:
-
-* ScreenToGif (Windows)
-* LICEcap
-* OBS Studio
 
 ---
 
