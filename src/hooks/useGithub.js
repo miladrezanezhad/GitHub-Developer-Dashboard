@@ -1,28 +1,32 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getUserProfile, getUserRepos } from '../api/github';
+import { getUserProfile, getUserRepos, getUserContributions, getUserSocials } from '../api/github';
 
 export function useGithub() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [data, setData] = useState({ profile: null, repos: [] });
+  const [data, setData] = useState({ profile: null, repos: [], contributions: null, socials: [] });
   const [lastUpdated, setLastUpdated] = useState(null);
 
   const fetchData = useCallback(async (force = false) => {
     setLoading(true);
     setError(null);
     try {
+      const username = import.meta.env.VITE_GITHUB_USERNAME || 'miladrezanezhad';
       if (force) {
-        const username = import.meta.env.VITE_GITHUB_USERNAME || 'miladrezanezhad';
         localStorage.removeItem(`gh_dash_user_${username}`);
         localStorage.removeItem(`gh_dash_repos_${username}`);
+        localStorage.removeItem(`gh_dash_contributions_${username}`);
+        localStorage.removeItem(`gh_dash_socials_${username}`);
       }
 
-      const [profile, repos] = await Promise.all([
+      const [profile, repos, contributions, socials] = await Promise.all([
         getUserProfile(),
-        getUserRepos()
+        getUserRepos(),
+        getUserContributions().catch(() => null),
+        getUserSocials().catch(() => [])
       ]);
 
-      setData({ profile, repos });
+      setData({ profile, repos, contributions, socials });
       setLastUpdated(new Date());
     } catch (err) {
       setError(err.message || 'An error occurred fetching GitHub data.');
@@ -34,7 +38,6 @@ export function useGithub() {
   useEffect(() => {
     fetchData();
 
-    // Auto-refresh every 1 hour (3600000 milliseconds)
     const interval = setInterval(() => {
       fetchData();
     }, 3600000);
@@ -47,6 +50,8 @@ export function useGithub() {
     error,
     profile: data.profile,
     repos: data.repos,
+    contributions: data.contributions,
+    socials: data.socials,
     refetch: () => fetchData(true),
     lastUpdated
   };

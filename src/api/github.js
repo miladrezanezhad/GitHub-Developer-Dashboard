@@ -2,7 +2,7 @@ const USERNAME = import.meta.env.VITE_GITHUB_USERNAME || 'miladrezanezhad';
 const TOKEN = import.meta.env.VITE_GITHUB_TOKEN || '';
 
 const CACHE_PREFIX = 'gh_dash_';
-const CACHE_TTL = 3600000; // 1 hour in milliseconds
+const CACHE_TTL = 3600000; // 1 hour
 
 function getCache(key) {
   const cached = localStorage.getItem(CACHE_PREFIX + key);
@@ -25,7 +25,7 @@ function setCache(key, data) {
       timestamp: Date.now()
     }));
   } catch (e) {
-    console.error('Failed to set cache data:', e);
+    console.error('Failed to set cache:', e);
   }
 }
 
@@ -36,13 +36,13 @@ async function fetchWithCache(url, cacheKey) {
   }
 
   const headers = {};
-  if (TOKEN) {
+  if (TOKEN && url.includes('api.github.com')) {
     headers['Authorization'] = `token ${TOKEN}`;
   }
 
   const response = await fetch(url, { headers });
   if (!response.ok) {
-    throw new Error(`GitHub API error: ${response.statusText} (${response.status})`);
+    throw new Error(`API error: ${response.statusText} (${response.status})`);
   }
   const data = await response.json();
   setCache(cacheKey, data);
@@ -55,4 +55,12 @@ export async function getUserProfile() {
 
 export async function getUserRepos() {
   return fetchWithCache(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`, `repos_${USERNAME}`);
+}
+
+export async function getUserContributions() {
+  return fetchWithCache(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`, `contributions_${USERNAME}`);
+}
+
+export async function getUserSocials() {
+  return fetchWithCache(`https://api.github.com/users/${USERNAME}/social_accounts`, `socials_${USERNAME}`);
 }

@@ -23,6 +23,8 @@ const LANGUAGE_COLORS = {
 export default function RepoList({ repos }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const languages = useMemo(() => {
     const list = new Set();
@@ -40,6 +42,24 @@ export default function RepoList({ repos }) {
       return matchesSearch && matchesLanguage;
     });
   }, [repos, searchQuery, selectedLanguage]);
+
+  // Reset page position to 1 when filters are changed
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleLanguageChange = (e) => {
+    setSelectedLanguage(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const totalPages = Math.ceil(filteredRepos.length / itemsPerPage);
+
+  const paginatedRepos = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredRepos.slice(start, start + itemsPerPage);
+  }, [filteredRepos, currentPage, itemsPerPage]);
 
   const formatUpdateDate = (dateString) => {
     const date = new Date(dateString);
@@ -59,12 +79,12 @@ export default function RepoList({ repos }) {
             type="text"
             placeholder="Search repositories..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
             className="search-input"
           />
           <select
             value={selectedLanguage}
-            onChange={(e) => setSelectedLanguage(e.target.value)}
+            onChange={handleLanguageChange}
             className="lang-select"
           >
             {languages.map(lang => (
@@ -75,10 +95,10 @@ export default function RepoList({ repos }) {
       </div>
 
       <div className="repo-grid">
-        {filteredRepos.length === 0 ? (
+        {paginatedRepos.length === 0 ? (
           <div className="no-repos">No repositories found matching your selection.</div>
         ) : (
-          filteredRepos.map(repo => {
+          paginatedRepos.map(repo => {
             const langColor = LANGUAGE_COLORS[repo.language] || '#8b949e';
             return (
               <div key={repo.id} className="repo-card">
@@ -116,6 +136,29 @@ export default function RepoList({ repos }) {
           })
         )}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="pagination-container">
+          <button
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination-btn"
+          >
+            Previous page
+          </button>
+          <span className="pagination-info">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="pagination-btn"
+          >
+            Next page
+          </button>
+        </div>
+      )}
     </div>
   );
 }

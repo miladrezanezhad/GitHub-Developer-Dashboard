@@ -7,7 +7,7 @@ import ContributionGraph from './components/ContributionGraph';
 import ActivityFeed from './components/ActivityFeed';
 
 export default function App() {
-  const { loading, error, profile, repos, refetch, lastUpdated } = useGithub();
+  const { loading, error, profile, repos, contributions, refetch, lastUpdated } = useGithub();
 
   const handleRefresh = (e) => {
     e.preventDefault();
@@ -109,7 +109,7 @@ export default function App() {
 
         <section className="main-content">
           <Stats profile={profile} repos={repos} />
-          <ContributionGraph repos={repos} />
+          <ContributionGraph contributions={contributions} repos={repos} />
           
           <div className="content-grid">
             <div className="left-panel">

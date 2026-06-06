@@ -676,3 +676,298 @@ body {
   font-size: 11px;
   margin-top: auto;
 }
+/* Padding class for aligning weekly columns on offset days */
+.level-empty {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.contribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.real-data-badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: #21262d;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+/* --- Contribution Graph Container --- */
+.contribution-container {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.contribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.real-data-badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: #21262d;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.graph-wrapper {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+/* --- Y-Axis Labels Alignment --- */
+.graph-y-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;                     /* Matches the 3px vertical cell gap exactly */
+  font-size: 9px;
+  color: var(--color-text-secondary);
+  margin-right: 4px;
+  user-select: none;
+}
+
+.graph-y-labels span {
+  height: 10px;                 /* Matches the 10px cell height exactly */
+  line-height: 10px;
+  display: block;
+}
+
+.graph-y-labels .label-hidden {
+  visibility: hidden;           /* Hidden elements maintain alignment structure */
+}
+
+/* --- Grid Structure --- */
+.graph-grid {
+  display: flex;
+  gap: 3px;
+}
+
+.graph-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.graph-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  transition: transform 0.1s;
+}
+
+.graph-cell:hover {
+  transform: scale(1.3);
+  z-index: 10;
+  outline: 1px solid #fff;
+}
+
+/* --- Contribution Theme Color Levels --- */
+.level-0 { 
+  background-color: #21262d;                         /* Noticeable contrast on #161b22 card */
+  border: 1px solid rgba(255, 255, 255, 0.02); 
+}
+.level-1 { background-color: #0e4429; }
+.level-2 { background-color: #006d32; }
+.level-3 { background-color: #26a641; }
+.level-4 { background-color: #39d353; }
+
+/* Structural alignment for padding elements */
+.level-empty {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+/* --- Legend Block --- */
+.graph-legend {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.legend-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+/* --- Pagination Bar --- */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.pagination-btn {
+  background-color: #21262d;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #30363d;
+  border-color: #8b949e;
+}
+
+.pagination-btn:disabled {
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border-color: rgba(48, 54, 61, 0.5);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  user-select: none;
+}
+/* --- Profile Sidebar Social Rows --- */
+.profile-social-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+.social-account-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text-main);
+  font-size: 13px;
+}
+
+.social-icon-wrapper {
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.social-link {
+  color: var(--color-text-main);
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+
+.social-link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* --- Footer Social Section --- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 24px;
+  border-top: 1px solid var(--color-border);
+  background-color: #0d1117;
+  margin-top: auto;
+}
+
+.footer-social-section {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0f6fc;
+  letter-spacing: 0.2px;
+}
+
+.footer-social-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #161b22;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.footer-social-link:hover {
+  background-color: #21262d;
+  border-color: #8b949e;
+  color: var(--color-accent);
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+}
+
+.footer-social-link:hover .footer-social-icon {
+  color: var(--color-accent);
+}
+
+.footer-social-label {
+  user-select: none;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+}
