@@ -5,8 +5,6 @@
 
 <img src="Screenshot.png" alt="GitHub Developer Dashboard">
 
-# 🔒 GitHub Developer Dashboard
-
 </div>
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/miladrezanezhad/GitHub-Developer-Dashboard?style=for-the-badge)
